@@ -7,7 +7,7 @@ class RawBuffer(object):
     """Bytes buffer with delimiter."""
 
     def __init__(self, config):
-        self.record_delimiter = config['record_delimiter']
+        self.record_delimiter = bytes(config['record_delimiter']) # Enforce bytes type
         self.size_limit = config['buffer_size_limit']
         self._size = 0
         self._buffer = io.BytesIO()
